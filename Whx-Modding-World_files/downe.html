@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://whxew.github.io/whx-modding-corner/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whx-Modding-World</title>
+  <link rel="stylesheet" href="./stylese.css">
+</head>
+<script>
+fetch('link2.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("mod-container");
+    data.products.forEach(mod => {
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML = `
+        <h2>${mod.name}</h2>
+        <p>${mod.description}</p>
+        ${mod.image ? `<img src="${mod.image}" alt="${mod.name}" class="product-image">` : ''}
+        <button class="buy-btn" onclick="window.open('${mod.link}', '_blank')">Download</button>
+      `;
+      container.appendChild(div);
+    });
+  })
+  .catch(error => console.error('Error loading JSON:', error));
+</script>
+
+<body>
+    <header>
+        <h1>Whx-Modding-World</h1>
+        <p>The best GTA mods for you!</p>
+    </header>
+    
+    <section class="products" id="mod-container">
+  <!-- content from links.json will go here -->
+</section>
+
+
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>Got questions? Join my Discord!</p>
+        <button class="discord-btn" onclick="window.location.href=&#39;https://discord.gg/VnHuSJvdtE&#39;">Go to Discord</button>
+    </section>
+
+    <footer>
+        <p>© whxew</p>
+    </footer>
+</body></html>
